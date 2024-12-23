@@ -58,7 +58,7 @@ laborer,Profession,Manual Labor,Gender Neutral,
 carpenter,Profession,Manual Labor,Gender Neutral,
 plumber,Profession,Manual Labor,Gender Neutral,
 electrician,Profession,Manual Labor,Gender Neutral,
-handyman,Profession,Manual Labor,Specific Gender,Male
+handyman,Profession,Manual Labor,Gender Neutral,
 construction worker,Profession,Manual Labor,Gender Neutral,
 mover,Profession,Manual Labor,Gender Neutral,
 nurse,Profession,Caregiving Roles,Gender Neutral,
