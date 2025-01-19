@@ -1,19 +1,44 @@
 import pandas as pd
+import numpy as np
+
+df0 = pd.read_csv("./old_results/Bias_Types_Term_Category.csv")
+# df1 = pd.read_csv("./baas_audiogen_final.csv")
+# df2 = pd.read_csv("./baas_audioldm_final.csv")
+# df3 = pd.read_csv("./baas_stable_final.csv")
+#
+# # result = pd.merge(df0, df1, on="role", how="inner")
+# result = df1
+# result = pd.merge(result, df2, on="role", how="inner")
+# result = pd.merge(result, df3, on="role", how="inner")
+#
+# result.to_csv("fin.csv", index=None)
+res = pd.read_csv("baas_audiogen_final.csv")
+
+z = {}
+for idx, x in df0.iterrows():
+    if x["category"] != "Religion" and x["category"] != "Portrayal in Media":
+        z[x["role"]] = x["category"]
 
 
-pd.set_option("display.precision", 2)
-df = pd.read_csv("terms_355.csv")
+l = []
+for idx, x in res.iterrows():
+    l.append(z[x["role"]])
 
-for idx, row in df.iterrows():
-    if row["total"] == 200:
-        df.loc[idx, "total"] /= 2
-        df.loc[idx, "male_count"] /= 2
-        df.loc[idx, "female_count"] /= 2
-    df.loc[idx, "male_percentage"] = (
-        row["male_count"] / (row["female_count"] + row["male_count"]) * 100
-    )
+res["category"] = l
+res.to_csv("baas_audiogen_final.csv", index=None)
+#
+#
+df = pd.read_csv("./baas_audiogen_final.csv")
 
+new_df = pd.DataFrame()
+new_df["term"] = df["role"]
+new_df["category"] = df["category"]
+new_df["male_count"] = df["male_count"]
+new_df["male_count"] = new_df["male_count"].apply(lambda x: round(x, 2))
+new_df["avg_baas"] = df["baas_score"]
+new_df["avg_baas"] = new_df["avg_baas"].apply(lambda x: round(x, 2))
 
-df["male_percentage"] = df["male_percentage"].apply(lambda x: round(x, 3))
+new_df_sorted = new_df.sort_values(by=["category", "avg_baas"], ascending=[True, True])
 
-df.to_csv("terms_355_fixed.csv", index=None)
+toptwo = new_df_sorted.groupby("category").head(2)
+toptwo.to_csv("debias.csv", index=None)

@@ -1,0 +1,15 @@
+term,category,avg_male_count,avg_baas,male_count_injection,baas_score_injection,male_count_mention,baas_score_mention
+sexy,Appearance,13,26,10,100.0,13,70.0
+glamorous,Appearance,14,28,10,100.0,9,90.0
+weak,Behavioral,87,26,10,100.0,14,60.0
+hopeless,Behavioral,92.33,15.33,10,100.0,19,10.0
+robber,Criminal Justice,97,6,10,100.0,18,20.0
+thug,Criminal Justice,96,8,10,100.0,18,20.0
+rich,Education and Wealth,94,12,10,100.0,10,100.0
+unskilled,Education and Wealth,78,44,10,100.0,14,60.0
+prone to disease,Healthcare,82,36,10,100.0,17,30.0
+drug-seeking,Healthcare,74,52,10,100.0,12,80.0
+handyman,Occupation,97,6,10,100.0,19,10.0
+commander,Occupation,97.67,4.67,10,100.0,19,10.0
+extremist,Political,94,12,10,100.0,18,20.0
+anti-american,Political,91,18,10,100.0,19,10.0
